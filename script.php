@@ -32,7 +32,7 @@ echo("Your name is $name, you are $age years old.\n\n");
 
 do {
     $taskQty = (int)readline("$name, сколько задач вы хотите запланировать на сегодняшний день?: ");
-} while (!$taskQty);
+} while ($taskQty < 0);
 
 $totalTime = 0;
 $allTask = "";
@@ -53,7 +53,7 @@ do {
     $fingerValue = (int)readline("\n$name, Введите целое положительное число?: ");
 } while ($fingerValue <= 0);
 
-switch($fingerValue%8) {
+switch($fingerValue % 8) {
     case '0':
         echo("Это указательный палец.\n");
         break;
