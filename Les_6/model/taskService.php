@@ -1,5 +1,5 @@
 <?php
-require_once 'comment.php';
+require_once 'model/comment.php';
 
 class TaskService {
     public function addComment(User $author, Task $task, string $text) 

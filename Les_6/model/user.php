@@ -8,10 +8,10 @@ class User {
     private  bool $isActive = true;
     private  DateTime $dateCreated;
  
-    function __construct(string $username, string $email)
+    function __construct(string $username)
     {
         $this->username = $username;
-        $this->email = $email;
+        // $this->email = $email;
         $this->dateCreated = new DateTime();
     }
 
