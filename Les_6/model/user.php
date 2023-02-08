@@ -6,13 +6,15 @@ class User {
     private  ?string $sex;
     private  ?int $age;
     private  bool $isActive = true;
-    private  DateTime $dateCreated;
+    private  string $dateCreated;
  
     function __construct(string $username)
     {
         $this->username = $username;
         // $this->email = $email;
-        $this->dateCreated = new DateTime();
+        date_default_timezone_set('Israel');
+        $date = new DateTimeImmutable();
+        $this->dateCreated = $date->format('l jS \o\f F Y h:i:s A');
     }
 
     private function getValidAge(?int $age): ?int

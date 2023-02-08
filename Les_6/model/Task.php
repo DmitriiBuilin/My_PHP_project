@@ -15,11 +15,12 @@ class Task {
     private bool $isDone;
     private string $comment;
 
-    function __construct(User $user, string $description, int $priority)
+    function __construct(User $user, string $description, int $priority, bool $isDone)
     {
         $this->user = $user;
         $this->description = $description;
         $this->priority = $priority;
+        $this->isDone = false;
 
         date_default_timezone_set('Israel');
         $date = new DateTimeImmutable();

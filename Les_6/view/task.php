@@ -1,5 +1,14 @@
 <?php
-
+    ?><br /><p>$_COOKIE</p><?php
+    var_dump($_COOKIE);
+    ?><br /><p>$_REQUEST</p><?php
+    var_dump($_REQUEST);
+    ?><br /><p>$_SESSION</p><?php
+    var_dump($_SESSION);
+    ?><br /><p>$_POST</p><?php
+    var_dump($_POST);
+    ?><br /><p>$_GET</p><?php
+    var_dump($_GET);
 ?>
 
 <!DOCTYPE html>
@@ -17,16 +26,56 @@
             color: white;           
             background-color: grey;
         }
-
         .button:hover {
             box-shadow: 1px 3px 6px black;
+            cursor: pointer;
+        }
+        .input-task {
+            margin: 0 10px;
+            height: 23px;
+        }
+        .btn-done {
+            background-color: green;
+            margin: 0 0 0 25px;
+            padding: 2px 20px;
+        }
+        .btn-home {
+            display: block;
+            margin-top: 40px;
+            width: 47px;
         }
     </style>
 </head>
 <body>
     <header></header>
     <main>
-        <a style="background-color: white; color: black;" class="button" href="?controller=home">Домой</a>
+        <?php if (isset($_SESSION['user'])): ?>
+            <div style="display:flex">
+                <h1>Пользователь:_</h1>
+                <h1><?= $_COOKIE['username']?></h1>
+            </div>
+            <form method="post" style="display: flex;">
+                <label for="newTask">Новая задача:
+                    <input class="input-task" id="newTask" name="task" type="text" placeholder="Опишите задачу">
+                </label>                
+                <button class="button">Добавть</button>
+            </form>
+            
+            <div>
+                <h3>Список задач:</h3>
+                <ol>
+                    
+                    <li>Task
+                        <a class="button btn-done">Выполнить</a>
+                    </li>
+                </ol>
+            </div>
+
+        <?php else: ?>
+            <h3>Вы не авторизованы, выполните вход.</h3>
+            <a class="button" href="?controller=security">Вход</a>
+        <?php endif; ?>  
+        <a style="background-color: white; color: black;" class="button btn-home" href="?controller=home">Домой</a>
     </main>
 </body>
 </html>

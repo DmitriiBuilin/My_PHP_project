@@ -1,10 +1,4 @@
-<?php
-require_once 'model/user.php';
 
-var_dump($_SESSION['user']);
-var_dump($_COOKIE);
-
-?>
 <!DOCTYPE html>
 <html lang="ru">
 <head>
