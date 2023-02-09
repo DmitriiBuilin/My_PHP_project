@@ -19,18 +19,22 @@ class TaskProvider
     public static function addTask(User $user, string $description, int $priority, bool $isDone)
     {
         $task = new Task($user, $description, $priority, $isDone);
-        var_dump($task);
-        $task->$user = $user;   
+        $_SESSION['tasksList'][] = $task;
+        // $task->$user = $user;   
         $task->$description = $description;
         $task->$priority = $priority;
         $task->$isDone = $isDone;
     }
 
+    
     public static function getUndoneList(array $tasks): void
-    {   
+    {
+        
         echo '<ol>';
         foreach ($tasks as $task) {
-            echo "<li class='tasks-list'><a class='button btn-done'>Выполнить</a> $task </li>";
+            // print_r($task->description);
+            $key = 1;
+            echo "<li class='tasks-list'><a href='?controller=task&action=done&key=$key' class='button btn-done'>Выполнить</a>  </li>";
         }            
         echo '</ol>';
     }    

@@ -17,14 +17,14 @@ class Task {
 
     function __construct(User $user, string $description, int $priority, bool $isDone)
     {
-        $this->user = $user;
-        $this->description = $description;
-        $this->priority = $priority;
-        $this->isDone = false;
+            $this->user = $user;
+            $this->description = $description;
+            $this->priority = $priority;
+            $this->isDone = $isDone;
 
-        date_default_timezone_set('Israel');
-        $date = new DateTimeImmutable();
-        $this->dateCreated = $date->format('l jS \o\f F Y h:i:s A');
+        $date = new  DateTime();
+        $this->dateCreated = $date->format('Y-m-d H:i:s');
+        $this->dateUpdated = $date->format('Y-m-d H:i:s');
     }
 
     public function getDescription()
@@ -33,9 +33,8 @@ class Task {
     }
     public function setDescription(string $description): ?string
     {
-        date_default_timezone_set('Israel');
-        $date = new DateTimeImmutable();
-        $this->dateUpdated = $date->format('l jS \o\f F Y h:i:s A');
+        $date = new DateTime();
+        $this->dateUpdated = $date->format('Y-m-d H:i:s');
 
             return $this->description = $description;
     }
@@ -45,16 +44,18 @@ class Task {
     }
     public function setPriority($priority)
     {
-        $this->priority = $priority;
+        $date = new DateTime();
+        $this->dateUpdated = $date->format('Y-m-d H:i:s');
+       
+            return $this->priority = $priority;
 
     }
 
     public function markAsDone(): bool 
     {
-        date_default_timezone_set('Israel');
-        $date = new DateTimeImmutable();
-        $this->dateUpdated = $date->format('l jS \o\f F Y h:i:s A');
-        $this->dateDone = $date->format('l jS \o\f F Y h:i:s A');
+        $date = new DateTime();
+        $this->dateUpdated = $date->format('Y-m-d H:i:s');
+        $this->dateDone = $date->format('Y-m-d H:i:s');
 
             return $this->isDone = true;
     }
@@ -63,19 +64,10 @@ class Task {
     {
         return $this->dateCreated;
     }
-    public function setDateCreated($dateCreated): ?string
-    {
-        $this->dateCreated = $dateCreated;
-    }
 
     public function getDateUpdated(): ?string
     {
         return $this->dateUpdated;
-    }
-
-    public function setDateUpdated($dateUpdated): ?string
-    {
-        $this->dateUpdated = $dateUpdated;
     }
 
     public function getDateDone(): ?string
@@ -83,14 +75,12 @@ class Task {
         return $this->dateDone;
     }
 
-    public function setDateDone($dateDone): ?string
-    {
-        $this->dateDone = $dateDone;
-    }
-
     public function setComment($comment): ?string
     {
-        $this->comment = $comment;
+        $date = new DateTime();
+        $this->dateUpdated = $date->format('Y-m-d H:i:s');
+        
+            return $this->comment = $comment;
     }
     public function getComment($comment): ?string
     {

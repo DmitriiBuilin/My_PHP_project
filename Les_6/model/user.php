@@ -12,9 +12,9 @@ class User {
     {
         $this->username = $username;
         // $this->email = $email;
-        date_default_timezone_set('Israel');
-        $date = new DateTimeImmutable();
-        $this->dateCreated = $date->format('l jS \o\f F Y h:i:s A');
+        
+        $date = new  DateTime();
+        $this->dateCreated = $date->format('Y-m-d H:i:s');
     }
 
     private function getValidAge(?int $age): ?int

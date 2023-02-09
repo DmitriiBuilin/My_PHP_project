@@ -64,7 +64,7 @@
 </body>
 </html>
 
-<!-- <?php
+<?php
     ?><br /><p>$_GET</p><?php
     var_dump($_GET);    
     ?><br /><p>$_POST</p><?php
@@ -76,5 +76,5 @@
     ?><br /><p>$_COOKIE</p><?php
     var_dump($_COOKIE);
 
-?> -->
+?>
 
