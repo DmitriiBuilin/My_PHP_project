@@ -14,5 +14,5 @@ if (isset($username)) {
     setcookie('username', $username, time() + 60 * 60 * 24);
 }
 
-
 require_once 'view/home.php';
+

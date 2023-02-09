@@ -1,16 +1,3 @@
-<?php
-    ?><br /><p>$_COOKIE</p><?php
-    var_dump($_COOKIE);
-    ?><br /><p>$_REQUEST</p><?php
-    var_dump($_REQUEST);
-    ?><br /><p>$_SESSION</p><?php
-    var_dump($_SESSION);
-    ?><br /><p>$_POST</p><?php
-    var_dump($_POST);
-    ?><br /><p>$_GET</p><?php
-    var_dump($_GET);
-?>
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -32,17 +19,20 @@
         }
         .input-task {
             margin: 0 10px;
-            height: 23px;
+            height: 28px;
         }
         .btn-done {
             background-color: green;
             margin: 0 0 0 25px;
-            padding: 2px 20px;
+            padding: 2px 5px;
         }
         .btn-home {
             display: block;
             margin-top: 40px;
             width: 47px;
+        }
+        .tasks-list {
+            margin-bottom: 8px;
         }
     </style>
 </head>
@@ -63,14 +53,8 @@
             
             <div>
                 <h3>Список задач:</h3>
-                <ol>
-                    
-                    <li>Task
-                        <a class="button btn-done">Выполнить</a>
-                    </li>
-                </ol>
+                <?= TaskProvider::getUndoneList($tasks); ?>                    
             </div>
-
         <?php else: ?>
             <h3>Вы не авторизованы, выполните вход.</h3>
             <a class="button" href="?controller=security">Вход</a>
@@ -79,3 +63,18 @@
     </main>
 </body>
 </html>
+
+<!-- <?php
+    ?><br /><p>$_GET</p><?php
+    var_dump($_GET);    
+    ?><br /><p>$_POST</p><?php
+    var_dump($_POST);
+    ?><br /><p>$_REQUEST</p><?php
+    var_dump($_REQUEST);        
+    ?><br /><p>$_SESSION</p><?php
+    var_dump($_SESSION);
+    ?><br /><p>$_COOKIE</p><?php
+    var_dump($_COOKIE);
+
+?> -->
+

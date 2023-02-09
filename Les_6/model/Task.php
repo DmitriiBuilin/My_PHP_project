@@ -1,6 +1,6 @@
 <?php
 
-require_once 'model/taskService.php';
+require_once 'model/taskProvider.php';
 
 class Task {
     private User $user;

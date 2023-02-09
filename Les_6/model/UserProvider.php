@@ -5,7 +5,7 @@ require_once "model/User.php";
 class UserProvider
 {
     private static array $accounts = [
-        'pikachu' => '123',
+        'pikachu' => '1',
         'root' => '321',
     ];
 
