@@ -1,18 +1,17 @@
 <?php
 
-require_once 'model/taskProvider.php';
+// require_once 'model/taskProvider.php';
 
 class Task {
     private string $user;
-
-    private string $description;
-
+    private int $user_id;
+    private int $id;
+    private string $description = "";
     private string $dateCreated;
     private string $dateUpdated;
     private string $dateDone;
-
     private int $priority;
-    private bool $isDone = false;
+    private int $isDone = 0;
     private string $comment;
 
     // function __construct(string $user, string $description, int $priority, bool $isDone)
@@ -26,16 +25,17 @@ class Task {
     //     $this->dateCreated = $date->format('Y-m-d H:i:s');
     //     $this->dateUpdated = $date->format('Y-m-d H:i:s');
     // }
-    function __construct(string $description)
+    function __construct()
     {
-        $this->description = $description;
+        // $this->description = $description;
+        $this->user_id = $_SESSION['user']->getId();
 
         $date = new  DateTime();
         $this->dateCreated = $date->format('Y-m-d H:i:s');
         $this->dateUpdated = $date->format('Y-m-d H:i:s');
     }
 
-    public function getDescription()
+    public function getDescription() : ?string
     {
         return $this->description;
     }
@@ -56,7 +56,6 @@ class Task {
         $this->dateUpdated = $date->format('Y-m-d H:i:s');
        
             return $this->priority = $priority;
-
     }
 
     public function markAsDone(): bool 
@@ -68,11 +67,11 @@ class Task {
         return $this->isDone = true;
     }
 
-    public function isDone(): bool
+    public function isDone(): int
     {
         return $this->isDone;
     }
-    public function setIsDone(bool $isDone): void
+    public function setIsDone(int $isDone): void
     {
         $this->isDone = $isDone;
     }
@@ -103,4 +102,13 @@ class Task {
     {
         return $this->comment;
     }
+    public function getUserId(): int
+    {
+        return $this->user_id;
+    }
+    public function getId(): int
+    {
+        return $this->id;
+    }
+
 }

@@ -46,20 +46,22 @@
                 <h1>Пользователь:_</h1>
                 <h1><?= $_COOKIE['username']?></h1>
             </div>
-            <form method="post" style="display: flex;">
+            <form method="post" action="?controller=task&action=add" style="display: flex;">
                 <label for="newTask">Новая задача:
-                    <input class="input-task" id="newTask" name="task" type="text" placeholder="Опишите задачу">
+                    <input class="input-task" id="newTask" name="description" type="text" placeholder="Опишите задачу">
                 </label>                
-                <button class="button">Добавть</button>
+                <button type="submit" class="button">Добавть</button>
             </form>
             
             <div>
                 <h3>Список задач:</h3>
                 <?php
                         echo '<ol>';
-                        foreach ($tasks as $key => $task) {
-                            // var_dump($task->getDescription());
-                            $description = $task->getDescription();            
+                        // var_dump($tasks);
+                        foreach ($tasks as $task) {
+                            
+                            $description = $task->getDescription(); 
+                            $key = $task->getId();
                             echo "<li class='tasks-list'><a href='?controller=task&action=setDone&id=$key' class='button btn-done'>Выполнить</a>    $description</li>";
                         }            
                         echo '</ol>';
@@ -74,7 +76,7 @@
 </body>
 </html>
 
-<?php
+<!-- <?php
     ?><br /><p>$_GET</p><?php
     var_dump($_GET);    
     ?><br /><p>$_POST</p><?php
@@ -86,5 +88,5 @@
     ?><br /><p>$_COOKIE</p><?php
     var_dump($_COOKIE);
 
-?>
+?> -->
 

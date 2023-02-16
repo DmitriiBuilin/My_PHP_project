@@ -3,6 +3,7 @@
 class User {
     private  string $username;
     private string $name;
+    private int $id;
     private  string $email;
     private  ?string $sex;
     private  ?int $age;
@@ -59,5 +60,10 @@ class User {
     public function getName(): string
     {
         return $this->name;
+    }
+
+    public function getId(): int
+    {
+        return $this->id;
     }
  }

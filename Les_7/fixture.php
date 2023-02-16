@@ -1,10 +1,10 @@
 <?php
-/* @var $pdo PDO */
-// $dsn = 'sqlite:Les_7/database.db';
 
 $pdo = require_once 'db.php';
 require_once 'model/User.php';
 require_once 'model/UserProvider.php';
+require_once 'model/Task.php';
+require_once 'model/TaskProvider.php';
 
 $pdo->exec('DROP TABLE IF EXISTS users');
 
@@ -21,3 +21,12 @@ $userProvider = new UserProvider($pdo);
 $user = new User('pikachu');
 $user->setName('pikachu');
 $userProvider->registerUser($user, '123');
+
+$pdo->exec('DROP TABLE IF EXISTS tasks');
+
+$pdo->exec('CREATE TABLE tasks (
+id INTEGER NOT NULL PRIMARY KEY AUTOINCREMENT,
+user_id INTEGER NOT NULL,
+description VARCHAR(150),
+isDone tinyint(1) NOT NULL
+)');

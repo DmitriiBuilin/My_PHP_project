@@ -40,18 +40,3 @@
 </body>
 </html>
 
-<?php
-    ?><br /><p>$_GET</p><?php
-    var_dump($_GET);    
-    ?><br /><p>$_POST</p><?php
-    var_dump($_POST);
-    ?><br /><p>$_REQUEST</p><?php
-    var_dump($_REQUEST);        
-    ?><br /><p>$_SESSION</p><?php
-    var_dump($_SESSION);
-    ?><br /><p>$_COOKIE</p><?php
-    var_dump($_COOKIE);
-
-
-    
-?>
