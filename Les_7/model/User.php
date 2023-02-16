@@ -2,6 +2,7 @@
 
 class User {
     private  string $username;
+    private string $name;
     private  string $email;
     private  ?string $sex;
     private  ?int $age;
@@ -48,5 +49,15 @@ class User {
     public function setSex($sex): ?string
     {
         $this->sex = $sex;
+    }
+
+    public function setName(string $name): void
+    {
+        $this->name = $name;
+    }
+    
+    public function getName(): string
+    {
+        return $this->name;
     }
  }

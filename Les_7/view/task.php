@@ -33,6 +33,8 @@
         }
         .tasks-list {
             margin-bottom: 8px;
+            font-size: 16px;
+            font-weight: 700;
         }
     </style>
 </head>
@@ -53,7 +55,15 @@
             
             <div>
                 <h3>Список задач:</h3>
-                <?= TaskProvider::getUndoneList($tasks); ?>                    
+                <?php
+                        echo '<ol>';
+                        foreach ($tasks as $key => $task) {
+                            // var_dump($task->getDescription());
+                            $description = $task->getDescription();            
+                            echo "<li class='tasks-list'><a href='?controller=task&action=setDone&id=$key' class='button btn-done'>Выполнить</a>    $description</li>";
+                        }            
+                        echo '</ol>';
+                ?>                    
             </div>
         <?php else: ?>
             <h3>Вы не авторизованы, выполните вход.</h3>

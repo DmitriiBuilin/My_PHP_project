@@ -3,7 +3,7 @@
 require_once 'model/taskProvider.php';
 
 class Task {
-    private User $user;
+    private string $user;
 
     private string $description;
 
@@ -12,15 +12,23 @@ class Task {
     private string $dateDone;
 
     private int $priority;
-    private bool $isDone;
+    private bool $isDone = false;
     private string $comment;
 
-    function __construct(User $user, string $description, int $priority, bool $isDone)
+    // function __construct(string $user, string $description, int $priority, bool $isDone)
+    // {
+    //         $this->user = $user;
+    //         $this->description = $description;
+    //         $this->priority = $priority;
+    //         $this->isDone = $isDone;
+
+    //     $date = new  DateTime();
+    //     $this->dateCreated = $date->format('Y-m-d H:i:s');
+    //     $this->dateUpdated = $date->format('Y-m-d H:i:s');
+    // }
+    function __construct(string $description)
     {
-            $this->user = $user;
-            $this->description = $description;
-            $this->priority = $priority;
-            $this->isDone = $isDone;
+        $this->description = $description;
 
         $date = new  DateTime();
         $this->dateCreated = $date->format('Y-m-d H:i:s');
@@ -36,7 +44,7 @@ class Task {
         $date = new DateTime();
         $this->dateUpdated = $date->format('Y-m-d H:i:s');
 
-            return $this->description = $description;
+        return $this->description = $description;
     }
     public function getPriority()
     {
@@ -57,7 +65,16 @@ class Task {
         $this->dateUpdated = $date->format('Y-m-d H:i:s');
         $this->dateDone = $date->format('Y-m-d H:i:s');
 
-            return $this->isDone = true;
+        return $this->isDone = true;
+    }
+
+    public function isDone(): bool
+    {
+        return $this->isDone;
+    }
+    public function setIsDone(bool $isDone): void
+    {
+        $this->isDone = $isDone;
     }
 
     public function getDateCreated(): ?string
