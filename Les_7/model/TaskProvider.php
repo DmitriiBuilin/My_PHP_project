@@ -19,9 +19,10 @@ class TaskProvider
     {    
         // $_SESSION['tasksList'][] = $task;
         $statement = $this->pdo->prepare(
-            'INSERT INTO tasks (user_id, description, isDone) VALUES (:user_id, :description, :isDone)'
+            'INSERT INTO tasks (id, user_id, description, isDone) VALUES (:id, :user_id, :description, :isDone)'
         );
         $statement->execute([
+            'id' => $task->setId(),
             'user_id' => $task->getUserId(),
             'description' => $task->getDescription(),
             'isDone' => $task->isDone()

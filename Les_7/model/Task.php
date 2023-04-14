@@ -39,6 +39,11 @@ class Task {
     {
         return $this->description;
     }
+
+    public function setId() : ?int
+    {
+        return rand(1, 1000000);
+    }
     public function setDescription(string $description): ?string
     {
         $date = new DateTime();
